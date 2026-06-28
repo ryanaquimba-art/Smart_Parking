@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Remove .php extension sa URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+# Disable directory listing
+Options -Indexes
