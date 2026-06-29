@@ -1,13 +1,12 @@
 <?php
 
 $host = getenv('MYSQLHOST');
+$database = getenv('MYSQLDATABASE');
 $user = getenv('MYSQLUSER');
 $password = getenv('MYSQLPASSWORD');
-$database = getenv('MYSQLDATABASE');
 $port = getenv('MYSQLPORT');
 
 try {
-
     $pdo = new PDO(
         "mysql:host=$host;port=$port;dbname=$database;charset=utf8mb4",
         $user,
@@ -19,11 +18,7 @@ try {
         PDO::ERRMODE_EXCEPTION
     );
 
-} catch(PDOException $e){
-
-    die(
-        "Database connection failed: "
-        . $e->getMessage()
-    );
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
 }
 ?>
